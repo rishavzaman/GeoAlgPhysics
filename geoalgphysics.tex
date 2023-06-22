@@ -1,0 +1,227 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+
+
+\title{Geometry, Algebra, and Physics}
+\author{Rishav Zaman}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+\theoremstyle{example}
+\newtheorem{example}{Example}
+
+\def\b#1{\textbf{#1}}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Introduction}
+
+Over the many years I've studied math and physics, I've noticed a distinct lack within my formal education. Topics, fields, objects, and tools that appear nearly universally in modern theoretical physics, yet are completely absent from the curriculum. Not just the pitifully tiny pool of undergrad material, but the thoroughly unimpressive graduate courses, which seem to only exist to justify the archaic practice of qualifying exams on outdated material.
+
+Most physicists either ignore this discrepancy, or silently accept it. It is left unsaid among the successful, that if one is unwilling to read books and learn on one's own, they are certainly doomed if they wish to study theoretical physics. In these seemingly esoteric tomes on differential geometry, complex geometry, and representation theory lay the bare foundations of modern physics. Foundations that are brushed over by educators as unimportant. Happily ignoring that without these mathematics it is impossible to understand the most basic notions, like what is a vector, or that spin has nothing to do with quantum mechanics, and that these two facts are intimately related.
+
+In the following, I will attempt to show you exactly what I mean by the above remarks. Instead of being as comprehensive as possible, I'll try to make it as simple as I can manage. I hope that I'm successful, and that the motivated student may follow along.
+
+\section{Groups and symmetry}
+
+The group, despite being considered an advanced object for students, is the simplest algebraic object really studied. The motivation for them was originally Evariste Galois proving the insolubility of the quintic. They were seen only as permutation groups, the various ways one could arrange finite sets. But the modern understanding, due mostly to Felix Klein, is to link them to geometry. His Erlangen program set out to use groups as the new basis for geometry, and this perspective has seen fruitful use first in particle physics, and the rest of modern physics soon thereafter. In particular, groups model \textit{symmetries} of other things. 
+
+The principal revelation was that objects could be defined by their symmetries, in terms of groups. The square is the object which remains unchanged upon quarter rotations in the plane, and the circle under every possible rotation. Atomic particles are best described by their symmetries under certain transformations, and indeed this is really what their atomic numbers and properties really are, data about how they change. It is seen that all physical theories are really statements of symmetry, and that one can start with symmetries and then construct the theory from it. It all ultimately comes down to groups.
+
+\begin{definition}
+	A \textit{group} $G$ is a set together with a binary operation $G\times G\to G$ that satisfies the following axioms
+	\begin{enumerate}
+		\item Associative
+		\item Existence of identity element
+		\item Existence of inverse elements for every element
+	\end{enumerate}
+\end{definition}
+
+\begin{remark}
+	I will leave it to you to verify that these properties are exactly what we mean by a "symmetry". Think of examples like normal figures in plane geometry, the invariance of the expression $x^2$ under the replacement $x\mapsto -x$, rotating objects in ordinary 3D space, and any other situation where something stays the same under some change of its "parameters".
+	
+	Note that commutativity is not required. Indeed, some symmetries, like rotations in 3D space, are noncommutative. As we will see much later, this is why quaternions do not commute $ij=-ji$.
+	
+	As another example, perhaps more familiar,  note that square matrices generally do not commute. Any invertible matrix can be seen physically as changing our coordinate system. Thus in the context of physics, where we measure according to such a fixed coordinate system, they are all seen as symmetries of our physical model which must always be paid due respect.
+\end{remark}
+
+\begin{example}
+	The integers form a group under addition, but not under multiplication. This is because the multiplicative inverse of an integer $k$ would be $1/k$ which is not an integer generally.
+\end{example}
+
+\begin{example}
+	The integers under addition modulo $n$ form a group. These are denoted by $\mathbb{Z}_n$
+\end{example}
+
+\begin{example}
+	The rotational symmetries of normal polygons form groups. For the equilateral triangle, there are $3$ elements, no rotation, a rotation of $360/3=120$ degrees counterclockwise, and a rotation of $2\times 120=240$ degrees counterclockwise.
+\end{example}
+\begin{remark}
+	Note that group elements are more identified by what they do, rather than what we call them. For the last example, we could easily pick the third group element to be a rotation of $120$ degrees clockwise, since the only real requirement on it is that composing it with the first element we picked should result in the identity.
+	
+	Indeed, we could present the group as being generated by compositions of a single rotation $r$ with the only rule placed on it that repeated it three times results in no rotation $r^3 = 1$. Notice that these algebraic requirements are the same as the prior group $\mathbb{Z}_3$. This leads us to
+\end{remark}
+
+\begin{definition}
+	A \textit{group homomorphism} is a mapping from one to another that preserves the group structures.
+	
+	Let $\rho:G\to H$ be a group homomorphism, then $\rho(xy)=\rho(x)\rho(y)$ where implicitly $xy$ denotes the group operation of $G$ acting on $x,y$ and $\rho(x)\rho(y)$ denotes the group operation of $H$ acting on $\rho(x),\rho(y)$.
+	
+	A \textit{group isomorphism} is a homomorphism that is bijective. In this case, the groups are said to be "the same group" insofar as they are groups.
+\end{definition}
+
+\begin{remark}
+	The rotation symmetry group of the equilateral triangle is isomorphic to the group $\mathbb{Z}_3$.
+\end{remark}
+
+\section{Vector Spaces}
+
+Vector spaces hold a special place in mathematics, for they are the only objects which are completely solved. This is because they hold within them the entire concept of \textit{linearity}. Many fields of mathematics are devoted to reducing nonlinear problems to linear ones. Calculus transforms the study of functions to that of derivatives and integrals, which are both linear. The derivative is the linear approximation to curves at a point, and integrals measure out volumes in a linear fashion.
+
+\begin{remark}
+	Note that whenever I say vector space, I mean a ''finite-dimensional'' vector space. This will be defined shortly. Infinite dimensional vector spaces are complicated and the study of them is called \textit{functional analysis}. The study of finite-dimensional vector spaces is now known as \textit{linear algebra}.
+\end{remark}
+
+The fundamental theorem of calculus is the formalization of a simple fact. Imagine that you are filling a bucket, marked with various volume lines. You start filling it with water, letting it run for some amount of time, then stopping. There are two ways to know how much water the bucket now has. You can keep track of the flow of water over the period of time and sum it, or you can read off the measurement lines on the bucket. Both give the same result, and that is the fundamental theorem of calculus. The integral, or infinitely divided sum, of the derivative of the function is equal to the change in the function.
+
+
+\begin{definition}
+	A vector space $V$ over a field $k$ is a set of objects we call vectors, which may be added together or scaled by a scalar (numbers in $k$). The first operation is called vector addition $V\times V\to V$ and the second is scalar multiplication $k\times V\to V$. They satisfy 3 axioms
+	
+	\begin{enumerate}
+		\item $V$ under vector addition forms a commutative group.
+		\begin{enumerate}
+			\item Associative
+			\item Commutative
+			\item Existence of identity
+			\item Existence of inverses for every element
+		\end{enumerate}
+		\item Repeated scalar multiplication is equivalent to multiplication in the field first. This is called \textit{compatibility} of operations.
+		\subitem a(b\b{u}) = (ab)\b{u}
+		\item Each operation distributes over the other.
+		\subitem (a+b)\b{u}=a\b{u}+b\b{u}
+		\subitem a(\b{u}+\b{v})=a\b{u}+a\b{v}
+	\end{enumerate}
+\end{definition}
+
+\begin{remark}
+	To read the above expressions. Vectors are always denoted by boldface while scalars appear as ordinary variables. Whether we are using scalar addition (between scalars) or vector addition (between vectors) will be implied by the objects at hand, and similarly for scalar multiplication (between scalars) and scalar multiplication (between a scalar and a vector). Note that we do not yet have a concept of \textit{vector multiplication}. There will be examples of vector spaces with vector products, such as the cross product on $\mathbb{R}^3$, and they are called \textit{algebras}.
+	
+	It is customary to refer to \textit{the} vector space $V$, with the scalar field being fixed. Usually it is the field of real numbers $\mathbb{R}$ or complex numbers $\mathbb{C}$, and we call $V$ a \textit{real vector space} or \textit{complex vector space} respectively.
+\end{remark}
+
+\begin{definition}
+	A linear transformation is a map between vector spaces $f:U\to V$ that is compatible with taking linear combinations
+	
+	\begin{equation}
+		f(a\b{u}+\b{v}) = f(a\b{u})+f(\b{v})=af(\b{u})+f(\b{v})
+	\end{equation}
+\end{definition}
+
+\begin{definition}
+	A matrix of a linear transformation are its components under given bases of vector spaces, arranged in an array. Customarily it is chosen that the $j$'th column of a matrix is $T(e_j)$'s components.
+\end{definition}
+
+\begin{definition}
+	A linear operator is a linear transformation between vector spaces of the same dimension. They always have square matrices.
+\end{definition}
+
+\section{Group Representations}
+
+\begin{definition}
+	A $d$-dimensional linear representation of a group is a homomorphism from the group to $d\times d$ square matrices.
+\end{definition}
+
+\section{Algebras}
+
+\begin{definition}
+	Lie Algebra
+\end{definition}
+
+\begin{definition}
+	Tensor Algebra
+\end{definition}
+
+\begin{definition}
+	Exterior Algebra
+\end{definition}
+
+\begin{example}
+	Trace
+\end{example}
+
+\begin{example}
+	Determinant
+\end{example}
+
+\section{Eigenvectors and Eigenvalues}
+
+\section{Euclidean Space}
+
+\section{Imaginary Time}
+
+\section{Topological Spaces}
+
+\section{Smooth Manifolds}
+
+\section{Lie Groups}
+
+\section{Lie Algebras}
+
+\section{Lie Correspondence}
+
+\section{Quantum Momentum Operator}
+
+\section{Inner Products}
+
+\section{Quantum Harmonic Oscillator}
+
+\section{Rotation Groups}
+
+what the hell is going on?
+
+\section{Quantum Angular Momentum Operator}
+
+testing.
+
+\section{Spin}
+
+\section{Exterior Algebra}
+
+asdf
+
+\section{Clifford Algebra}
+
+\section{Exact Sequences and Platonic Solids}
+
+\section{Tensors and Special Relativity}
+
+\section{Complex Analysis and Geometry}
+
+\section{Complex Analysis and Algebra}
+
+\section{Complex Analysis and Topology}
+
+\section{Feynman Propagator}
+
+\section{Gauge Theory}
+
+\section{Stokes Theorem}
+
+\section{de Rham Cohomology}
+
+\section{Poincare Lemma and Bohm-Aharanov}
+
+\section{References}
+
+\end{document}
