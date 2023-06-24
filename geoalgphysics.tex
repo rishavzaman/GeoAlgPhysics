@@ -98,7 +98,7 @@ The fundamental theorem of calculus is the formalization of a simple fact. Imagi
 
 
 \begin{definition}
-	A vector space $V$ over a field $k$ is a set of objects we call vectors, which may be added together or scaled by a scalar (numbers in $k$). The first operation is called vector addition $V\times V\to V$ and the second is scalar multiplication $k\times V\to V$. They satisfy 3 axioms
+	A \textit{vector space} $V$ over a field $k$ is a set of objects we call vectors, which may be added together or scaled by a scalar (numbers in $k$). The first operation is called vector addition $V\times V\to V$ and the second is scalar multiplication $k\times V\to V$. They satisfy 3 axioms
 	
 	\begin{enumerate}
 		\item $V$ under vector addition forms a commutative group.
@@ -135,7 +135,7 @@ The fundamental theorem of calculus is the formalization of a simple fact. Imagi
 \end{example}
 
 \begin{definition}
-	A linear transformation is a map between vector spaces $f:U\to V$ that is compatible with taking linear combinations
+	A \textit{linear map} is a map between vector spaces $f:U\to V$ that is compatible with taking linear combinations
 	
 	\begin{equation}
 		f(a\b{u}+\b{v}) = f(a\b{u})+f(\b{v})=af(\b{u})+f(\b{v})
@@ -143,19 +143,23 @@ The fundamental theorem of calculus is the formalization of a simple fact. Imagi
 \end{definition}
 
 \begin{definition}
-	A matrix of a linear transformation are its components under given bases of vector spaces, arranged in an array. Customarily it is chosen that the $j$'th column of a matrix is $T(e_j)$'s components.
+	A \textit{matrix} of a linear map is its components under given bases of vector spaces, arranged in an array. Customarily it is chosen that the $j$'th column of a matrix is $T(e_j)$'s components.
 \end{definition}
 
 \begin{definition}
-	A linear operator is a linear transformation between vector spaces of the same dimension. They always have square matrices.
+	A \textit{linear operator} is a linear transformation between vector spaces of the same dimension. They always have square matrices.
 \end{definition}
+
+\begin{remark}
+	Linear operators are very important. Not only in further study of linear algebra, but their properties are used to represent those of groups. In this sense, linear algebra is as common as the group, which is ubiquitous.
+\end{remark}
 
 \subsection{Eigenvectors and Eigenvalues}
 
 \subsection{Inner Product Spaces}
 
 \begin{definition}
-	An inner product on a vector space is ...
+	An \textit{inner product} on a vector space is ...
 \end{definition}
 
 \subsection{Dual Vector Spaces}
@@ -163,8 +167,14 @@ The fundamental theorem of calculus is the formalization of a simple fact. Imagi
 \subsection{Group Representations}
 
 \begin{definition}
-	A $d$-dimensional linear representation of a group is a homomorphism from the group to $d\times d$ square matrices.
+	A $d$-dimensional \textit{linear representation} of a group is a homomorphism from the group to $d\times d$ square matrices.
 \end{definition}
+
+\begin{remark}
+	Note that it is only a homomorphism, not an isomorphism. When a representation is injective we call it \textit{faithful}. Usually, there are many different representations of various dimensions of a group.
+	
+	For example, the rotation group $SO(3)$ has representations of any dimension. In order of increasing dimension, the representations describe the transformation properties of ($SO(3)$-)scalars, spinors, vectors, and so on through tensor products.
+\end{remark}
 
 \subsection{Exact Sequences}
 
@@ -176,22 +186,24 @@ The fundamental theorem of calculus is the formalization of a simple fact. Imagi
 
 \subsection{Lie Algebras}
 
+Lie algebras come from the study of Lie groups, or historically, continuous or simply continuously parametrized groups. They were discovered by Sophus Lie and Killing independently. They form interesting algebraic objects on their own, which is how we will study them here. But their axioms cannot really be properly motivated when divorced from Lie groups.
+
 \begin{definition}
 	A \textit{Lie algebra} $\mathfrak{g}$ is a vector space together with a vector product $\mathfrak{g}\times\mathfrak{g}\to\mathfrak{g}$, usually denoted as a bracket and called the Lie bracket that satisfies 3 axioms
 	\begin{enumerate}
-		\item Bilinearity
+		\item \textit{Bilinearity}
 		\subitem $[ax+by,cz+dw]=ac[x,z]+ad[x,w]+bc[y,z]+bd[y,w]$
-		\item Alternating
+		\item \textit{Alternating}
 		\subitem $[x,y]+[y,x]=0$
-		\item Jacobi identity
+		\item \textit{Jacobi identity}
 		\subitem $[x,[y,z]]+[y,[z,x]]+[z,[x,y]]=0$
 	\end{enumerate}
 \end{definition}
 
 \begin{remark}
-	In the above, $a$ through $d$ represent scalars, while $x$ through $w$ are vectors.
+	In the above definition, $a$ through $d$ denote scalars, while $x$ through $w$ denote vectors.
 	
-	The Jacobi identity is necessary, and can be derived from, the requirement that the adjoint representation is a homomorphism. Shown in the following
+	The Jacobi identity can be understood as the requirement that the adjoint representation, defined in the following, is a homomorphism of Lie algebras.
 \end{remark}
 
 \begin{definition}
@@ -217,6 +229,14 @@ The fundamental theorem of calculus is the formalization of a simple fact. Imagi
 \begin{example}
 	$\mathbb{R}^3$ together with the cross product $\times$ forms a Lie algebra. Later we will see that it is isomorphic to the Lie algebra of the 3D rotation group $SO(3)$.
 \end{example}
+
+\begin{remark}
+	This is the algebra of angular momentum, how particles rotate. From physics, if $\b{p}$ is the linear momentum of a particle and $\b{r}$ the radius vector from its point of rotation, then 
+	\begin{equation}
+		\b{L}=\b{r}\times\b{p}
+	\end{equation}
+	is its angular momentum. Later, when we study Lie groups like the rotation group, its significance will be more obvious.
+\end{remark}
 
 \subsection{Tensor Algebras}
 
