@@ -2,7 +2,7 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amsthm}
-
+\usepackage{esint}
 
 \title{Geometry, Algebra, and Physics}
 \author{Rishav Zaman}
@@ -15,6 +15,12 @@
 
 \theoremstyle{example}
 \newtheorem{example}{Example}
+
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}
+
+\theoremstyle{lemma}
+\newtheorem{lemma}{Lemma}
 
 \def\b#1{\textbf{#1}}
 
@@ -241,6 +247,10 @@ Lie algebras come from the study of Lie groups, or historically, continuous or s
 \subsection{Tensor Algebras}
 
 \begin{definition}
+	Tensor Product
+\end{definition}
+
+\begin{definition}
 	Tensor Algebra
 \end{definition}
 
@@ -276,9 +286,84 @@ Lie algebras come from the study of Lie groups, or historically, continuous or s
 
 \subsection{Smooth Manifolds}
 
-\subsection{Stokes Theorem}
+\subsection{Differential Forms}
+
+\begin{theorem}[Stokes Theorem]
+	Let the pairing $(\omega,\Omega)$ denote the integral
+	\begin{equation}
+		\int_\Omega\omega = (\omega,\Omega)
+	\end{equation}
+	Then we have
+	\begin{equation}
+		(d\omega,\Omega)=(\omega,\partial\Omega)
+	\end{equation}
+\end{theorem}
+
+\begin{remark}
+	This theorem generalizes the fundamental theorem of calculus to higher Euclidean dimensions, and to smooth manifolds generally.
+	
+	First, the fundamental theorem of calculus.
+	\begin{equation}
+		\int_a^bf'dx=f(b)-f(a)
+	\end{equation}
+	By defining the interval $I=[a,b]$, so that $\partial I=b-a$ is the oriented boundary, this is equivalent to the expression in differential forms
+	\begin{equation}
+		\int_Idf=\int_{\{a,b\}}f=f(b)-f(a)
+	\end{equation}
+	
+	Second, the gradient formula
+	\begin{equation}
+		\int\nabla f\cdot dV
+	\end{equation}
+	
+	Third, the curl formula
+	\begin{equation}
+		\int\nabla\times F
+	\end{equation}
+	
+	And fourth, the divergence formula
+	\begin{equation}
+		\int\nabla\cdot F
+	\end{equation}
+\end{remark}
 
 \subsection{de Rham Cohomology}
+
+\begin{definition}
+	A form is \textit{exact} if it is the exterior derivative of another form
+	\begin{equation}
+		\omega=d\phi
+	\end{equation}
+\end{definition}
+
+\begin{definition}
+	A form is \textit{closed} if its exterior derivative is 0
+	\begin{equation}
+		d\omega=0
+	\end{equation}
+\end{definition}
+
+\begin{remark}
+	The name comes from the fact that integrating a closed form along a closed boundary always gives 0
+	\begin{proof}
+		\begin{equation}
+			\oint_{\partial\Omega}\omega = \oiint_\Omega d\omega=\oiint_\Omega 0 = 0
+		\end{equation}
+	\end{proof}
+\end{remark}
+
+\begin{lemma}
+	Every exact form is closed.
+	\begin{proof}
+		A form $\omega$ is exact if $\omega=d\phi$. Then
+		\begin{equation}
+			d\omega=dd\phi=d^2\phi=0
+		\end{equation}
+	\end{proof}
+\end{lemma}
+
+
+
 
 \subsection{Poincare Lemma and Bohm-Aharanov}
 
