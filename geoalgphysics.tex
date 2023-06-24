@@ -177,7 +177,41 @@ The fundamental theorem of calculus is the formalization of a simple fact. Imagi
 \subsection{Lie Algebras}
 
 \begin{definition}
-	Lie Algebra
+	A \textit{Lie algebra} $\mathfrak{g}$ is a vector space together with a vector product $\mathfrak{g}\times\mathfrak{g}\to\mathfrak{g}$, usually denoted as a bracket and called the Lie bracket that satisfies 3 axioms
+	\begin{enumerate}
+		\item Bilinearity
+		\subitem $[ax+by,cz+dw]=ac[x,z]+ad[x,w]+bc[y,z]+bd[y,w]$
+		\item Alternating
+		\subitem $[x,y]+[y,x]=0$
+		\item Jacobi identity
+		\subitem $[x,[y,z]]+[y,[z,x]]+[z,[x,y]]=0$
+	\end{enumerate}
+\end{definition}
+
+\begin{remark}
+	In the above, $a$ through $d$ represent scalars, while $x$ through $w$ are vectors.
+	
+	The Jacobi identity is necessary, and can be derived from, the requirement that the adjoint representation is a homomorphism. Shown in the following
+\end{remark}
+
+\begin{definition}
+	The \textit{adjoint representation} of a Lie algebra.
+	
+	Let $\mathfrak{g}$ be a Lie algebra. Given any vector $x$, we define its adjoint action on $\mathfrak{g}$ by
+	\begin{equation}
+		ad_{x}(y)=[x,y]
+	\end{equation}
+	So we now have a linear map $ad_x:\mathfrak{g}\to\mathfrak{g}$. We may consider the adjoint map on its own
+	\begin{equation}
+		ad(x)=ad_x
+	\end{equation}
+	so that $ad:\mathfrak{g}\to\mathfrak{gl}(\mathfrak{g})$. This is called the adjoint representation.
+	
+	We can show that $ad$ is a Lie algebra homomorphism, that is it preserves the Lie bracket
+	\begin{equation}
+		[ad_x,ad_y](z)=ad_{[x,y]}(z)
+	\end{equation}
+	This is equivalent to the Jacobi identity.
 \end{definition}
 
 \begin{example}
