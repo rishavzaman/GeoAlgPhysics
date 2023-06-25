@@ -185,7 +185,10 @@ The fundamental theorem of calculus is the formalization of a simple fact. Imagi
 \subsection{Exact Sequences}
 
 \begin{example}
-	Platonic Solids
+	Platonic Solids satisfy Euler's polyhedron formula
+	\begin{equation}
+		V - E + F = 2
+	\end{equation}
 \end{example}
 
 \section{Algebras}
@@ -368,6 +371,44 @@ Lie algebras come from the study of Lie groups, or historically, continuous or s
 \subsection{Poincare Lemma and Bohm-Aharanov}
 
 \section{Lie Theory}
+
+\subsection{Euler's number}
+
+Where does $e$, as in the base of the exponential function
+\begin{equation}
+	exp(x)=e^x=1+x+\frac{1}{2}x^2+\frac{1}{6	}x^3+\dots
+\end{equation}
+come from?
+
+The idea comes from continuously compounding interest. Suppose we have some interest rate, say 6 percent interest over a year. This would mean the money at the end of the year would be multiplied by a factor of 
+\begin{equation}
+	(1+.06)
+\end{equation}
+Now suppose that instead of the 6 percent being compounded at the end of the year, we were to compound it twice over the year at equal intervals. This would mean every six months we would compound it by 3 percent. So at the end of the year, our money would be multiplied by a factor of
+\begin{equation}
+	(1+.03)(1+.03)=(1+.03)^2
+\end{equation}
+Now suppose we compound thrice a year. This would be
+\begin{equation}
+	(1+.02)^3
+\end{equation}
+Let us abstract now to a general rate $r$ compounded $n$ times a year. This would be
+\begin{equation}
+	(1+\frac{r}{n})^n
+\end{equation}
+Now consider the question. What would happen if we compounded the interest continuously, an infinite number of times a year? Does this even exist? It would be the limit of the above expression
+\begin{equation}
+	\lim_{n\to\infty}(1+\frac{r}{n})^n
+\end{equation}
+To help us figure this out, we will define Euler's number as
+\begin{equation}
+	e:=\lim_{n\to\infty}(1+\frac{1}{n})^n
+\end{equation}
+Note that by making the replacement $n=1/k$, we can replace the limits in the above expression and re-label $k$ as $n$ to obtain an equivalent definition
+\begin{equation}
+	e:=\lim_{n\to\infty}(1+n)^{\frac{1}{n}}
+\end{equation}
+
 
 \subsection{Lie Groups}
 
