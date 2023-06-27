@@ -3,6 +3,7 @@
 \usepackage{amsfonts}
 \usepackage{amsthm}
 \usepackage{esint}
+\usepackage[margin=.5in]{geometry}
 
 \title{Geometry, Algebra, and Physics}
 \author{Rishav Zaman}
@@ -404,12 +405,15 @@ To help us figure this out, we will define Euler's number as
 \begin{equation}
 	e:=\lim_{n\to\infty}(1+\frac{1}{n})^n
 \end{equation}
-Note that by making the replacement $n=1/k$, we can replace the limits in the above expression and re-label $k$ as $n$ to obtain an equivalent definition
+Now consider the expression with a rate of $x$
 \begin{equation}
-	e:=\lim_{n\to\infty}(1+n)^{\frac{1}{n}}
+	\lim_{n\to\infty}(1+\frac{x}{n})^{n}
 \end{equation}
-
-
+Under replacement $n=mx$ we can change our limit and re-label $m\to n$ to obtain
+\begin{equation}
+	\lim_{n\to\infty}(1+\frac{1}{n})^{nx}=e^x
+\end{equation}
+So therefore, $e^x$ represents infinitely compounding the rate of interest $x$.
 \subsection{Lie Groups}
 
 \subsection{Lie Algebras and Correspondance}
